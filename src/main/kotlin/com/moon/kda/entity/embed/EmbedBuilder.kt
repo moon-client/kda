@@ -15,12 +15,21 @@
  */
 package com.moon.kda.entity.embed
 
+import com.moon.kda.entity.embed
 import net.dv8tion.jda.api.EmbedBuilder
 
 class EmbedBuilder : EmbedBuilder() {
   var description = ""
     set(value) {
       setDescription(value)
+    }
+  var thumbnail = ""
+    set(value) {
+      setThumbnail(value)
+    }
+  var image = ""
+    set(value) {
+      setImage(value)
     }
 
   fun author(block: EmbedAuthor.() -> Unit) {
@@ -38,6 +47,14 @@ class EmbedBuilder : EmbedBuilder() {
       embedField.name,
       embedField.value,
       embedField.inline
+    )
+  }
+
+  fun footer(block: EmbedFooter.() -> Unit) {
+    val embedFooter = EmbedFooter().apply(block)
+    setFooter(
+      embedFooter.text,
+      embedFooter.iconUrl
     )
   }
 }

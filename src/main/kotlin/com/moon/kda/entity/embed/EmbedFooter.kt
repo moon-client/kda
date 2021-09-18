@@ -13,26 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.moon.kda.tests
+package com.moon.kda.entity.embed
 
-import com.moon.kda.entity.embed
-import net.dv8tion.jda.api.entities.MessageEmbed
-
-object EntityTests {
-
-  fun testEmbedBuilder(): MessageEmbed {
-    return embed {
-      description = "description test"
-      author {
-        name = ""
-        url = "https://moonclient.xyz"
-        iconUrl = "https://moonclient.xyz"
-      }
-      field {
-        name = "Some field!"
-        value = "Field value"
-      }
-    }
-  }
-
+class EmbedFooter {
+  var text: String? = null
+  var iconUrl: String? = null
 }
