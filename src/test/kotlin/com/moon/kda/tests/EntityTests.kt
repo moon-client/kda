@@ -19,10 +19,12 @@ import com.moon.kda.entity.embed
 import net.dv8tion.jda.api.entities.MessageEmbed
 
 object EntityTests {
-
   fun testEmbedBuilder(): MessageEmbed {
     return embed {
       description = "description test"
+      thumbnail = "https://host.snens.team/i/cJpl1BCVLARV"
+      image = "https://host.snens.team/i/cJpl1BCVLARV"
+      title = "Title test"
       author {
         name = ""
         url = "https://moonclient.xyz"
@@ -32,7 +34,12 @@ object EntityTests {
         name = "Some field!"
         value = "Field value"
       }
+      footer {
+        text = "footer test"
+      }
+      color {
+        hex = 0xFFFFFF
+      }
     }
   }
-
 }

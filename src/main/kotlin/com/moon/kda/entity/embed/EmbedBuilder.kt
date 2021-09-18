@@ -15,10 +15,13 @@
  */
 package com.moon.kda.entity.embed
 
-import com.moon.kda.entity.embed
 import net.dv8tion.jda.api.EmbedBuilder
 
 class EmbedBuilder : EmbedBuilder() {
+  var title = ""
+    set(value) {
+      setTitle(value)
+    }
   var description = ""
     set(value) {
       setDescription(value)
@@ -56,5 +59,15 @@ class EmbedBuilder : EmbedBuilder() {
       embedFooter.text,
       embedFooter.iconUrl
     )
+  }
+
+  fun color(block: EmbedColor.() -> Unit) {
+    val embedColor = EmbedColor().apply(block)
+    val hex = embedColor.hex ?: run {
+      val rgb = embedColor.rgb ?: return
+      setColor(rgb)
+      return
+    }
+    setColor(hex.toInt())
   }
 }
