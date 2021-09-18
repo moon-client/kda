@@ -1,0 +1,27 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.5.30'
+    id 'java'
+}
+
+group 'com.moon'
+version '0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+
+    maven {
+        name 'm2-dv8tion'
+        url 'https://m2.dv8tion.net/releases'
+    }
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.5.30'
+    implementation("net.dv8tion:JDA:$JDA_VERSION") {
+        exclude module: 'opus-java'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
