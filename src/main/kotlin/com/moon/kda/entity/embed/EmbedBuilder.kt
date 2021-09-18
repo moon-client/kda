@@ -19,20 +19,20 @@ import net.dv8tion.jda.api.EmbedBuilder
 
 class EmbedBuilder : EmbedBuilder() {
   var title = ""
-    set(value) {
-      setTitle(value)
+    set(title) {
+      setTitle(title)
     }
   var description = ""
-    set(value) {
-      setDescription(value)
+    set(description) {
+      setDescription(description)
     }
   var thumbnail = ""
-    set(value) {
-      setThumbnail(value)
+    set(thumbnail) {
+      setThumbnail(thumbnail)
     }
   var image = ""
-    set(value) {
-      setImage(value)
+    set(image) {
+      setImage(image)
     }
 
   fun author(block: EmbedAuthor.() -> Unit) {

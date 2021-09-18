@@ -16,6 +16,8 @@
 package com.moon.kda.tests
 
 import com.moon.kda.entity.embed
+import com.moon.kda.entity.message
+import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.MessageEmbed
 
 object EntityTests {
@@ -40,6 +42,11 @@ object EntityTests {
       color {
         hex = 0xFFFFFF
       }
+    }
+  }
+
+  fun messageBuilderTest(): Message {
+    return message {
     }
   }
 }

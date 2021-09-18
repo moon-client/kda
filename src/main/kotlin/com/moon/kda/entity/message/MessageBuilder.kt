@@ -13,15 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.moon.kda.entity
+package com.moon.kda.entity.message
 
-import com.moon.kda.entity.embed.EmbedBuilder
-import com.moon.kda.entity.message.MessageBuilder
-import net.dv8tion.jda.api.entities.Message
-import net.dv8tion.jda.api.entities.MessageEmbed
+import net.dv8tion.jda.api.MessageBuilder
 
-fun embed(block: EmbedBuilder.() -> Unit): MessageEmbed =
-  EmbedBuilder().apply(block).build()
-
-fun message(block: MessageBuilder.() -> Unit): Message =
-  MessageBuilder().apply(block).build()
+class MessageBuilder : MessageBuilder() {
+  var tts = false
+    set(tts) {
+      setTTS(tts)
+    }
+  var nonce = ""
+    set(nonce) {
+      setNonce(nonce)
+    }
+}
