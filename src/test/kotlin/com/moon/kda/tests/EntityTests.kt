@@ -27,6 +27,10 @@ object EntityTests {
         url = "https://moonclient.xyz"
         iconUrl = "https://moonclient.xyz"
       }
+      field {
+        name = "Some field!"
+        value = "Field value"
+      }
     }
   }
 

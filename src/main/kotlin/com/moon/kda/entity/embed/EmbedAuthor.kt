@@ -15,7 +15,7 @@
  */
 package com.moon.kda.entity.embed
 
-class AuthorInformation {
+class EmbedAuthor {
   var name: String? = null
   var url: String? = null
   var iconUrl: String? = null

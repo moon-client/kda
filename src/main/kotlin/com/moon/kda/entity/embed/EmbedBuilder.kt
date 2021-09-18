@@ -18,12 +18,26 @@ package com.moon.kda.entity.embed
 import net.dv8tion.jda.api.EmbedBuilder
 
 class EmbedBuilder : EmbedBuilder() {
-  fun author(block: AuthorInformation.() -> Unit) {
-    val authorInformation = AuthorInformation().apply(block)
+  var description = ""
+    set(value) {
+      setDescription(value)
+    }
+
+  fun author(block: EmbedAuthor.() -> Unit) {
+    val embedAuthor = EmbedAuthor().apply(block)
     setAuthor(
-      authorInformation.name,
-      authorInformation.url,
-      authorInformation.iconUrl
+      embedAuthor.name,
+      embedAuthor.url,
+      embedAuthor.iconUrl
+    )
+  }
+
+  fun field(block: EmbedField.() -> Unit) {
+    val embedField = EmbedField().apply(block)
+    addField(
+      embedField.name,
+      embedField.value,
+      embedField.inline
     )
   }
 }
