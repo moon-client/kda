@@ -16,12 +16,15 @@
 package com.moon.kda.entity
 
 import com.moon.kda.entity.embed.EmbedBuilder
-import com.moon.kda.entity.message.MessageBuilder
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.MessageEmbed
+import net.dv8tion.jda.internal.interactions.ButtonImpl
 
 fun embed(block: EmbedBuilder.() -> Unit): MessageEmbed =
   EmbedBuilder().apply(block).build()
 
 fun message(block: MessageBuilder.() -> Unit): Message =
   MessageBuilder().apply(block).build()
+
+fun button(block: ButtonBuilder.() -> Unit): ButtonImpl =
+  ButtonBuilder().apply(block).build()
