@@ -15,10 +15,15 @@
  */
 package com.moon.kda.tests
 
+import com.moon.kda.entity.button
 import com.moon.kda.entity.embed
 import com.moon.kda.entity.message
+import net.dv8tion.jda.api.entities.Emoji
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.MessageEmbed
+import net.dv8tion.jda.api.interactions.components.ActionRow
+import net.dv8tion.jda.api.interactions.components.ButtonStyle
+import net.dv8tion.jda.internal.interactions.ButtonImpl
 
 object EntityTests {
   fun testEmbedBuilder(): MessageEmbed {
@@ -45,11 +50,20 @@ object EntityTests {
     }
   }
 
-  fun messageBuilderTest(): Message {
+  fun testButtonBuilder(): ButtonImpl {
+    return button {
+      id = "test"
+      label = "Test button!"
+      style = ButtonStyle.PRIMARY
+      emoji = Emoji.fromUnicode("\uD83D\uDCE9")
+    }
+  }
+
+  fun testMessageBuilder(): Message {
     return message {
       tts = false
       embeds(testEmbedBuilder())
-      actionRows()
+      actionRows(ActionRow.of(testButtonBuilder()))
     }
   }
 }

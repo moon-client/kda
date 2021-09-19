@@ -23,30 +23,30 @@ import net.dv8tion.jda.internal.utils.Checks
 
 class ButtonBuilder {
   var id: String? = null
-    set(value) {
+    set(id) {
       Checks.notEmpty(id, "ID")
       Checks.notLonger(id, Button.ID_MAX_LENGTH, "ID")
-      field = value
+      field = id
     }
   var label: String? = null
-    set(value) {
+    set(label) {
       Checks.notEmpty(label, "Label")
       Checks.notLonger(label, Button.LABEL_MAX_LENGTH, "Label")
-      field = value
+      field = label
     }
   var style: ButtonStyle? = null
-    set(value) {
+    set(style) {
       Checks.notNull(style, "Style")
       Checks.check(style != ButtonStyle.UNKNOWN, "Cannot make button with unknown style!")
       require(style != ButtonStyle.LINK || style == ButtonStyle.LINK) { "You cannot change a link button to another style!" }
       require(style == ButtonStyle.LINK || style != ButtonStyle.LINK) { "You cannot change a styled button to a link button!" }
-      field = value
+      field = style
     }
   var url: String? = null
-    set(value) {
+    set(url) {
       Checks.notEmpty(url, "URL")
       Checks.notLonger(url, Button.URL_MAX_LENGTH, "URL")
-      field = value
+      field = url
     }
   var disabled = false
   var emoji: Emoji? = null

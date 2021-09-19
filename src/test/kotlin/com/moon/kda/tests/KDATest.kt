@@ -24,6 +24,6 @@ fun main() {
   build.awaitReady()
   build.getGuildById("888493683131940894")
     ?.getTextChannelById("888914568108187779")
-    ?.sendMessage(EntityTests.testEmbedBuilder())
+    ?.sendMessage(EntityTests.testMessageBuilder())
     ?.queue()
 }
