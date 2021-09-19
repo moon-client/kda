@@ -1,7 +1,7 @@
 # KDA
 KDA is a compatibility layer for [JDA](https://github.com/DV8FromTheWorld/JDA) and Kotlin built for easy use of it with Kotlin
 
-### This is still work in progress
+### This is still work in progress, therefore there is no maven repository. If you want to use this you have to build it yourself until it's stable.
 ## Events
 ### Hook events in KDA
 ```kotlin
