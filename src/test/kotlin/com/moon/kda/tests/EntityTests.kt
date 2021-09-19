@@ -47,6 +47,9 @@ object EntityTests {
 
   fun messageBuilderTest(): Message {
     return message {
+      tts = false
+      embeds(testEmbedBuilder())
+      actionRows()
     }
   }
 }

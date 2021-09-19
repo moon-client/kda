@@ -16,6 +16,8 @@
 package com.moon.kda.entity.message
 
 import net.dv8tion.jda.api.MessageBuilder
+import net.dv8tion.jda.api.entities.MessageEmbed
+import net.dv8tion.jda.api.interactions.components.ActionRow
 
 class MessageBuilder : MessageBuilder() {
   var tts = false
@@ -26,4 +28,12 @@ class MessageBuilder : MessageBuilder() {
     set(nonce) {
       setNonce(nonce)
     }
+
+  fun embeds(vararg embeds: MessageEmbed) {
+    setEmbeds(*embeds)
+  }
+
+  fun actionRows(vararg actionRows: ActionRow) {
+    setActionRows(*actionRows)
+  }
 }
