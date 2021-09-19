@@ -21,7 +21,6 @@ import com.moon.kda.entity.message
 import net.dv8tion.jda.api.entities.Emoji
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.MessageEmbed
-import net.dv8tion.jda.api.interactions.components.ActionRow
 import net.dv8tion.jda.api.interactions.components.ButtonStyle
 import net.dv8tion.jda.internal.interactions.ButtonImpl
 
@@ -61,7 +60,6 @@ object EntityTests {
 
   fun testMessageBuilder(): Message {
     return message {
-      tts = false
       embed {
         description = "description test"
         thumbnail = "https://host.snens.team/i/cJpl1BCVLARV"

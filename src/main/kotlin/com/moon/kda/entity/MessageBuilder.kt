@@ -29,6 +29,10 @@ class MessageBuilder : MessageBuilder() {
     set(nonce) {
       setNonce(nonce)
     }
+  var content = ""
+    set(content) {
+      setContent(content)
+    }
 
   fun embed(block: EmbedBuilder.() -> Unit) {
     setEmbeds(
