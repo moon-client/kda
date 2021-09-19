@@ -2,6 +2,24 @@
 KDA is a compatibility layer for [JDA](https://github.com/DV8FromTheWorld/JDA) and Kotlin built for easy use of it with Kotlin
 
 ### This is still work in progress
+## Events
+### Hook events in KDA
+```kotlin
+class EventTest : Events() {
+  val guildMessageReceivedHook = EventHook<GuildMessageReceivedEvent> {
+    println("Received message: ${message.contentRaw}")
+  }
+}
+```
+
+### Register event listener classes in KDA
+```kotlin
+val token = "YOUR_TOKEN"
+val jda = JDABuilder.createDefault(token).build()
+jda.awaitReady()
+jda.registerEvents(EventTest())
+```
+
 ## Examples
 
 ### Create messages
