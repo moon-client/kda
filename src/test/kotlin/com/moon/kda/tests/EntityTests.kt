@@ -83,7 +83,26 @@ object EntityTests {
           hex = 0xFFFFFF
         }
       }
-      actionRows(ActionRow.of(testButtonBuilder()))
+      actionRow {
+        button {
+          id = "test"
+          label = "Test button!"
+          style = ButtonStyle.PRIMARY
+          emoji = Emoji.fromUnicode("\uD83D\uDCE9")
+        }
+        button {
+          id = "test2"
+          label = "Test button 2!"
+          style = ButtonStyle.PRIMARY
+          emoji = Emoji.fromUnicode("\uD83D\uDCE9")
+        }
+        button {
+          id = "test3"
+          label = "Test button 3!"
+          style = ButtonStyle.PRIMARY
+          emoji = Emoji.fromUnicode("\uD83D\uDCE9")
+        }
+      }
     }
   }
 }

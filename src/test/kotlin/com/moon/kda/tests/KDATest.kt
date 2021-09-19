@@ -23,9 +23,9 @@ fun main() {
   val token = File("token.txt")
   val build = JDABuilder.createDefault(token.readText()).build()
   build.awaitReady()
-//  build.getGuildById("888493683131940894")
-//    ?.getTextChannelById("888914568108187779")
-//    ?.sendMessage(EntityTests.testMessageBuilder())
-//    ?.queue()
+  build.getGuildById("888493683131940894")
+    ?.getTextChannelById("888914568108187779")
+    ?.sendMessage(EntityTests.testMessageBuilder())
+    ?.queue()
   build.registerEvents(EventTest())
 }

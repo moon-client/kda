@@ -13,42 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.moon.kda.entity
 
-import com.moon.kda.entity.embed.EmbedBuilder
-import net.dv8tion.jda.api.MessageBuilder
-import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.interactions.components.ActionRow
+import net.dv8tion.jda.api.interactions.components.Component
 
-class MessageBuilder : MessageBuilder() {
-  var tts = false
-    set(tts) {
-      setTTS(tts)
-    }
-  var nonce = ""
-    set(nonce) {
-      setNonce(nonce)
-    }
+class ActionRowBuilder {
+  private val components = mutableListOf<Component>()
 
-  fun embed(block: EmbedBuilder.() -> Unit) {
-    setEmbeds(
-      EmbedBuilder().apply(block)
+  fun button(block: ButtonBuilder.() -> Unit) {
+    components.add(
+      ButtonBuilder().apply(block)
         .build()
     )
   }
 
-  fun actionRow(block: ActionRowBuilder.() -> Unit) {
-    setActionRows(
-      ActionRowBuilder().apply(block)
-        .build()
-    )
-  }
-
-  fun embeds(vararg embeds: MessageEmbed) {
-    setEmbeds(*embeds)
-  }
-
-  fun actionRows(vararg actionRows: ActionRow) {
-    setActionRows(*actionRows)
+  fun build(): ActionRow {
+    return ActionRow.of(components)
   }
 }
