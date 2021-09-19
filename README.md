@@ -1,7 +1,8 @@
 # KDA
 KDA is a compatibility layer for [JDA](https://github.com/DV8FromTheWorld/JDA) and Kotlin built for easy use of it with Kotlin
 
-## This is still work in progress!
+### This is still work in progress
+## Examples
 
 ### Create messages
 ```kotlin
