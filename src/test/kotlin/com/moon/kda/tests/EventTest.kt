@@ -13,19 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.moon.kda.tests
 
-import com.moon.kda.event.registerEvents
-import net.dv8tion.jda.api.JDABuilder
-import java.io.File
+import com.moon.kda.event.Events
+import com.moon.kda.event.EventHook
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-fun main() {
-  val token = File("token.txt")
-  val build = JDABuilder.createDefault(token.readText()).build()
-  build.awaitReady()
-//  build.getGuildById("888493683131940894")
-//    ?.getTextChannelById("888914568108187779")
-//    ?.sendMessage(EntityTests.testMessageBuilder())
-//    ?.queue()
-  build.registerEvents(EventTest())
+class EventTest : Events() {
+
+  val testHook = EventHook<GuildMessageReceivedEvent> {
+    println("Received message: ${message.contentRaw}")
+  }
+
 }

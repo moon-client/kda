@@ -13,19 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.moon.kda.tests
+package com.moon.kda.event
 
-import com.moon.kda.event.registerEvents
-import net.dv8tion.jda.api.JDABuilder
-import java.io.File
+import net.dv8tion.jda.api.events.GenericEvent
 
-fun main() {
-  val token = File("token.txt")
-  val build = JDABuilder.createDefault(token.readText()).build()
-  build.awaitReady()
-//  build.getGuildById("888493683131940894")
-//    ?.getTextChannelById("888914568108187779")
-//    ?.sendMessage(EntityTests.testMessageBuilder())
-//    ?.queue()
-  build.registerEvents(EventTest())
-}
+class EventHook<T: GenericEvent>(val receiver: T.() -> Unit)

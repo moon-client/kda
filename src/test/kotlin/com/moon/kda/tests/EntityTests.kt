@@ -33,9 +33,9 @@ object EntityTests {
       image = "https://host.snens.team/i/cJpl1BCVLARV"
       title = "Title test"
       author {
-        name = ""
+        name = "Author example name"
         url = "https://moonclient.xyz"
-        iconUrl = "https://moonclient.xyz"
+        iconUrl = "https://host.snens.team/i/cJpl1BCVLARV"
       }
       field {
         name = "Some field!"
