@@ -62,7 +62,27 @@ object EntityTests {
   fun testMessageBuilder(): Message {
     return message {
       tts = false
-      embeds(testEmbedBuilder())
+      embed {
+        description = "description test"
+        thumbnail = "https://host.snens.team/i/cJpl1BCVLARV"
+        image = "https://host.snens.team/i/cJpl1BCVLARV"
+        title = "Title test"
+        author {
+          name = "Author example name"
+          url = "https://moonclient.xyz"
+          iconUrl = "https://host.snens.team/i/cJpl1BCVLARV"
+        }
+        field {
+          name = "Some field!"
+          value = "Field value"
+        }
+        footer {
+          text = "footer test"
+        }
+        color {
+          hex = 0xFFFFFF
+        }
+      }
       actionRows(ActionRow.of(testButtonBuilder()))
     }
   }

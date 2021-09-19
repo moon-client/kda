@@ -15,6 +15,7 @@
  */
 package com.moon.kda.entity
 
+import com.moon.kda.entity.embed.EmbedBuilder
 import net.dv8tion.jda.api.MessageBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.interactions.components.ActionRow
@@ -28,6 +29,10 @@ class MessageBuilder : MessageBuilder() {
     set(nonce) {
       setNonce(nonce)
     }
+
+  fun embed(block: EmbedBuilder.() -> Unit) {
+    setEmbeds(EmbedBuilder().apply(block).build())
+  }
 
   fun embeds(vararg embeds: MessageEmbed) {
     setEmbeds(*embeds)
