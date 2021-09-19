@@ -6,16 +6,16 @@ KDA is a compatibility layer for [JDA](https://github.com/DV8FromTheWorld/JDA) a
 ### Create messages
 ```kotlin
 message { 
-      content = "This is an example message!"
+  content = "This is an example message!"
 
-      actionRow { 
-        button {
-          id = "example"
-          label = "Example button"
-          style = ButtonStyle.PRIMARY
-        }
-      }      
+  actionRow { 
+    button {
+      id = "example"
+      label = "Example button"
+      style = ButtonStyle.PRIMARY
     }
+  }      
+}
 ```
 
 <br>
