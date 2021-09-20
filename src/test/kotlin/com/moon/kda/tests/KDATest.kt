@@ -15,17 +15,35 @@
  */
 package com.moon.kda.tests
 
+import com.moon.kda.entity.sendMessage
 import com.moon.kda.event.registerEvents
 import net.dv8tion.jda.api.JDABuilder
 import java.io.File
 
 fun main() {
   val token = File("token.txt")
-  val build = JDABuilder.createDefault(token.readText()).build()
-  build.awaitReady()
-//  build.getGuildById("888493683131940894")
-//    ?.getTextChannelById("888914568108187779")
-//    ?.sendMessage(EntityTests.testMessageBuilder())
-//    ?.queue()
-  build.registerEvents(EventTest())
+  val jda = JDABuilder.createDefault(token.readText()).build()
+  jda.awaitReady()
+  val textChannel = jda.getGuildById("888493683131940894")
+    ?.getTextChannelById("888914568108187779") ?: return
+  textChannel.sendMessage {
+    embed {
+      description = "description test"
+      title = "Title test"
+      author {
+        name = "Author example name"
+      }
+      field {
+        name = "Some field!"
+        value = "Field value"
+      }
+      footer {
+        text = "footer test"
+      }
+      color {
+        hex = 0xFFFFFF
+      }
+    }
+  }
+  jda.registerEvents(EventTest())
 }

@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package com.moon.kda.tests
+package com.moon.kda.entity
 
-import com.moon.kda.event.Events
-import com.moon.kda.event.EventHook
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.MessageChannel
 
-class EventTest : Events() {
-  val guildMessageReceivedHook = EventHook<GuildMessageReceivedEvent> {
-    println("Received message: ${message.contentRaw}")
-  }
+fun MessageChannel.sendMessage(block: MessageBuilder.() -> Unit) {
+  this.sendMessage(
+    MessageBuilder().apply(block)
+      .build()
+  ).queue()
 }

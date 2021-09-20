@@ -42,6 +42,7 @@ object EntityTests {
       }
       footer {
         text = "footer test"
+        iconUrl = "https://host.snens.team/i/cJpl1BCVLARV"
       }
       color {
         hex = 0xFFFFFF
