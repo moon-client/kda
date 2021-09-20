@@ -62,7 +62,7 @@ embed {
 }
 ```
 ### Send messages in message channels
-```
+```kotlin
 textChannel.sendMessage {
     embed {
       description = "description test"
