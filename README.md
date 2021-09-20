@@ -61,6 +61,28 @@ embed {
   }
 }
 ```
+### Send messages in message channels
+```
+textChannel.sendMessage {
+    embed {
+      description = "description test"
+      title = "Title test"
+      author {
+        name = "Author example name"
+      }
+      field {
+        name = "Some field!"
+        value = "Field value"
+      }
+      footer {
+        text = "footer test"
+      }
+      color {
+        hex = 0xFFFFFF
+      }
+    }
+  }
+```
 
 <br>
 TODO...
