@@ -16,11 +16,23 @@
 
 package com.moon.kda.entity
 
+import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.MessageChannel
+import java.util.function.Consumer
 
 fun MessageChannel.sendMessage(block: MessageBuilder.() -> Unit) {
   this.sendMessage(
     MessageBuilder().apply(block)
       .build()
   ).queue()
+}
+
+fun MessageChannel.sendMessage(
+  block: MessageBuilder.() -> Unit,
+  consumer: Consumer<Message>
+) {
+  this.sendMessage(
+    MessageBuilder().apply(block)
+      .build()
+  ).queue(consumer)
 }

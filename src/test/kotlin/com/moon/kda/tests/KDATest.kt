@@ -26,7 +26,7 @@ fun main() {
   jda.awaitReady()
   val textChannel = jda.getGuildById("888493683131940894")
     ?.getTextChannelById("888914568108187779") ?: return
-  textChannel.sendMessage {
+  textChannel.sendMessage({
     embed {
       description = "description test"
       title = "Title test"
@@ -44,6 +44,8 @@ fun main() {
         hex = 0xFFFFFF
       }
     }
-  }
+  }, {
+    println("sent message")
+  })
   jda.registerEvents(EventTest())
 }
