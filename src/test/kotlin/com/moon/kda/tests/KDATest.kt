@@ -15,14 +15,20 @@
  */
 package com.moon.kda.tests
 
+import com.moon.kda.entity.button
+import com.moon.kda.entity.onClick
 import com.moon.kda.entity.sendMessage
 import com.moon.kda.event.registerEvents
+import com.moon.kda.feature.Features
+import com.moon.kda.withFeature
 import net.dv8tion.jda.api.JDABuilder
+import net.dv8tion.jda.api.interactions.components.ButtonStyle
 import java.io.File
 
 fun main() {
   val token = File("token.txt")
   val jda = JDABuilder.createDefault(token.readText()).build()
+  jda.withFeature(Features.BUTTON_CLICK_REDIRECTION)
   jda.awaitReady()
   val textChannel = jda.getGuildById("888493683131940894")
     ?.getTextChannelById("888914568108187779") ?: return
@@ -42,6 +48,16 @@ fun main() {
       }
       color {
         hex = 0xFFFFFF
+      }
+    }
+    actionRow {
+      button {
+        id = "op_button"
+        label = "Click test"
+        style = ButtonStyle.PRIMARY
+      }.onClick {
+        println("button clicked!")
+        it.reply("Clicked the button").queue()
       }
     }
   }, {

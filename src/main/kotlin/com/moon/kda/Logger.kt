@@ -13,26 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.moon.kda
 
-package com.moon.kda.entity
+import org.slf4j.LoggerFactory
 
-import net.dv8tion.jda.api.entities.Message
-import net.dv8tion.jda.api.entities.MessageChannel
-import java.util.function.Consumer
+private val logger = LoggerFactory.getLogger("KDA")
 
-fun MessageChannel.sendMessage(block: MessageBuilder.() -> Unit) {
-  this.sendMessage(
-    MessageBuilder().apply(block)
-      .build()
-  ).queue()
-}
+fun failed(error: String) = logger.error(error)
 
-fun MessageChannel.sendMessage(
-  block: MessageBuilder.() -> Unit,
-  consumer: Consumer<Message>
-) {
-  this.sendMessage(
-    MessageBuilder().apply(block)
-      .build()
-  ).queue(consumer)
-}
+fun log(log: String) = logger.info(log)
+
+fun debug(debug: String) = logger.debug(debug)

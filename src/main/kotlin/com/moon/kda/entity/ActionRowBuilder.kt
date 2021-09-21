@@ -15,17 +15,19 @@
  */
 package com.moon.kda.entity
 
+import com.moon.kda.entity.button.ButtonBuilder
 import net.dv8tion.jda.api.interactions.components.ActionRow
 import net.dv8tion.jda.api.interactions.components.Component
+import net.dv8tion.jda.internal.interactions.ButtonImpl
 
 class ActionRowBuilder {
   private val components = mutableListOf<Component>()
 
-  fun button(block: ButtonBuilder.() -> Unit) {
-    components.add(
-      ButtonBuilder().apply(block)
-        .build()
-    )
+  fun button(block: ButtonBuilder.() -> Unit): ButtonImpl {
+    val button = ButtonBuilder().apply(block)
+      .build()
+    components.add(button)
+    return button
   }
 
   fun build(): ActionRow {

@@ -13,19 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.moon.kda.entity
+package com.moon.kda
 
-import com.moon.kda.entity.button.ButtonBuilder
-import com.moon.kda.entity.embed.EmbedBuilder
-import net.dv8tion.jda.api.entities.Message
-import net.dv8tion.jda.api.entities.MessageEmbed
-import net.dv8tion.jda.internal.interactions.ButtonImpl
+import com.moon.kda.feature.Features
+import net.dv8tion.jda.api.JDA
 
-fun embed(block: EmbedBuilder.() -> Unit): MessageEmbed =
-  EmbedBuilder().apply(block).build()
+fun JDA.withFeature(feature: Features) {
+  log("Registered extension ${feature.name}")
+  val featureInstance = feature.feature
+  featureInstance.registerListeners()
+  addEventListener(featureInstance)
+}
 
-fun message(block: MessageBuilder.() -> Unit): Message =
-  MessageBuilder().apply(block).build()
-
-fun button(block: ButtonBuilder.() -> Unit): ButtonImpl =
-  ButtonBuilder().apply(block).build()
+fun JDA.withFeatures(vararg features: Features) {
+  features.forEach(this::withFeature)
+}

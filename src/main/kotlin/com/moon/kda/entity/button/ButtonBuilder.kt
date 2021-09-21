@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.moon.kda.entity
+package com.moon.kda.entity.button
 
 import net.dv8tion.jda.api.entities.Emoji
 import net.dv8tion.jda.api.interactions.components.Button

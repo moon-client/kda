@@ -13,19 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.moon.kda.entity
 
-import com.moon.kda.entity.button.ButtonBuilder
-import com.moon.kda.entity.embed.EmbedBuilder
-import net.dv8tion.jda.api.entities.Message
-import net.dv8tion.jda.api.entities.MessageEmbed
-import net.dv8tion.jda.internal.interactions.ButtonImpl
+package com.moon.kda.feature
 
-fun embed(block: EmbedBuilder.() -> Unit): MessageEmbed =
-  EmbedBuilder().apply(block).build()
+import com.moon.kda.entity.button.ButtonClickRedirection
 
-fun message(block: MessageBuilder.() -> Unit): Message =
-  MessageBuilder().apply(block).build()
-
-fun button(block: ButtonBuilder.() -> Unit): ButtonImpl =
-  ButtonBuilder().apply(block).build()
+enum class Features(val feature: Feature) {
+  BUTTON_CLICK_REDIRECTION(ButtonClickRedirection()),
+}
