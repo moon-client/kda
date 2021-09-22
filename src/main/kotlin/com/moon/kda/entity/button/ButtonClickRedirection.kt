@@ -13,14 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.moon.kda.entity.button
 
 import com.moon.kda.event.EventHook
 import com.moon.kda.feature.Feature
 import net.dv8tion.jda.api.events.interaction.ButtonClickEvent
 import net.dv8tion.jda.internal.interactions.ButtonImpl
-import java.lang.IllegalArgumentException
 
 class ButtonClickRedirection : Feature() {
   private val redirections = hashMapOf<String, (ButtonClickEvent) -> Unit>()

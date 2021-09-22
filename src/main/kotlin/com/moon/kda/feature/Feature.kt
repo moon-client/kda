@@ -18,4 +18,5 @@ package com.moon.kda.feature
 
 import com.moon.kda.event.Events
 
+// TODO: add more stuff to this, right now its just a useless abstract class only used for event hooking
 abstract class Feature : Events()

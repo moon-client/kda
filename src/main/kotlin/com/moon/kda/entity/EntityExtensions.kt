@@ -42,6 +42,10 @@ fun MessageChannel.sendMessage(
 }
 
 fun ButtonImpl.onClick(func: (ButtonClickEvent) -> Unit) {
-  val buttonClickRedirector = Features.BUTTON_CLICK_REDIRECTION.feature as ButtonClickRedirection
-  buttonClickRedirector.createRedirectionOf(this, func)
+  val clickRedirectionFeature = Features.BUTTON_CLICK_REDIRECTION.feature
+    as ButtonClickRedirection
+  clickRedirectionFeature.createRedirectionOf(
+    this,
+    func
+  )
 }

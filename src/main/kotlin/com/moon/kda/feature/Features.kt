@@ -19,5 +19,5 @@ package com.moon.kda.feature
 import com.moon.kda.entity.button.ButtonClickRedirection
 
 enum class Features(val feature: Feature) {
-  BUTTON_CLICK_REDIRECTION(ButtonClickRedirection()),
+  BUTTON_CLICK_REDIRECTION(ButtonClickRedirection())
 }

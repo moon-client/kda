@@ -15,7 +15,6 @@
  */
 package com.moon.kda.tests
 
-import com.moon.kda.entity.button
 import com.moon.kda.entity.onClick
 import com.moon.kda.entity.sendMessage
 import com.moon.kda.event.registerEvents
