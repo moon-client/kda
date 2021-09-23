@@ -14,12 +14,18 @@
  * limitations under the License.
  */
 
-package com.moon.kda.feature
+package com.moon.kda.command
 
-import com.moon.kda.command.CommandExecutionRedirection
-import com.moon.kda.entity.button.ButtonClickRedirection
+import com.moon.kda.feature.Features
+import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
+import net.dv8tion.jda.api.interactions.commands.build.CommandData
 
-enum class Features(val feature: Feature) {
-  BUTTON_CLICK_REDIRECTION(ButtonClickRedirection()),
-  COMMAND_EXECUTION_REDIRECTION(CommandExecutionRedirection())
+fun CommandData.onExecution(func: (SlashCommandEvent) -> Unit): CommandData {
+  val clickRedirectionFeature = Features.COMMAND_EXECUTION_REDIRECTION.feature
+    as CommandExecutionRedirection
+  clickRedirectionFeature.createRedirectionOf(
+    this,
+    func
+  )
+  return this
 }

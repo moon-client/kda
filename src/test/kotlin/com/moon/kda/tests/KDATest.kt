@@ -16,14 +16,13 @@
 package com.moon.kda.tests
 
 import com.moon.kda.command.command
+import com.moon.kda.command.onExecution
 import com.moon.kda.command.option
-import com.moon.kda.command.subCommand
-import com.moon.kda.command.subCommandGroup
 import com.moon.kda.entity.onClick
 import com.moon.kda.entity.sendMessage
 import com.moon.kda.event.registerEvents
 import com.moon.kda.feature.Features
-import com.moon.kda.withFeature
+import com.moon.kda.withFeatures
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.User
 import net.dv8tion.jda.api.interactions.components.ButtonStyle
@@ -32,7 +31,10 @@ import java.io.File
 fun main() {
   val token = File("token.txt")
   val jda = JDABuilder.createDefault(token.readText()).build()
-  jda.withFeature(Features.BUTTON_CLICK_REDIRECTION)
+  jda.withFeatures(
+    Features.BUTTON_CLICK_REDIRECTION,
+    Features.COMMAND_EXECUTION_REDIRECTION
+  )
   jda.awaitReady()
   val textChannel = jda.getGuildById("888493683131940894")
     ?.getTextChannelById("888914568108187779") ?: return
@@ -46,6 +48,8 @@ fun main() {
         option<User>("three", "Option Test 3", true),
         option<Double>("four", "Option Test 4", true)
       )
+    }.onExecution {
+      it.reply("Command execution event!").queue()
     }
   ).queue()
   textChannel.sendMessage({
