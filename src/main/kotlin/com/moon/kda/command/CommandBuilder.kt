@@ -50,11 +50,16 @@ class CommandBuilder {
         option.required
       )
     }.toTypedArray()
-    return CommandData(
+    val commandData = CommandData(
       name,
       description
-    ).addOptions(*translatedOptions)
-      .addSubcommands(*subCommands)
-      .addSubcommandGroups(*subCommandGroups)
+    )
+    if(options.isEmpty()) {
+      commandData.addSubcommands(*subCommands)
+        .addSubcommandGroups(*subCommandGroups)
+    } else {
+      commandData.addOptions(*translatedOptions)
+    }
+    return commandData
   }
 }
