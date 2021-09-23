@@ -29,7 +29,10 @@ class ButtonClickRedirection : Feature() {
     redirectionFunction.invoke(this)
   }
 
-  fun createRedirectionOf(buttonImpl: ButtonImpl, func: (ButtonClickEvent) -> Unit) {
+  fun createRedirectionOf(
+    buttonImpl: ButtonImpl,
+    func: (ButtonClickEvent) -> Unit
+  ) {
     val buttonId = buttonImpl.id ?: run {
       throw IllegalArgumentException("You can't create a redirection for a button without an id!")
     }

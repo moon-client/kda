@@ -15,12 +15,17 @@
  */
 package com.moon.kda.tests
 
+import com.moon.kda.command.command
+import com.moon.kda.command.option
+import com.moon.kda.command.subCommand
+import com.moon.kda.command.subCommandGroup
 import com.moon.kda.entity.onClick
 import com.moon.kda.entity.sendMessage
 import com.moon.kda.event.registerEvents
 import com.moon.kda.feature.Features
 import com.moon.kda.withFeature
 import net.dv8tion.jda.api.JDABuilder
+import net.dv8tion.jda.api.entities.User
 import net.dv8tion.jda.api.interactions.components.ButtonStyle
 import java.io.File
 
@@ -31,6 +36,18 @@ fun main() {
   jda.awaitReady()
   val textChannel = jda.getGuildById("888493683131940894")
     ?.getTextChannelById("888914568108187779") ?: return
+  jda.updateCommands().addCommands(
+    command {
+      name = "arguments"
+      description = "The best command world wide!"
+      options = arrayOf(
+        option<String>("one", "Option Test", true),
+        option<Int>("two", "Option Test 2", true),
+        option<User>("three", "Option Test 3", true),
+        option<Double>("four", "Option Test 4", true)
+      )
+    }
+  ).queue()
   textChannel.sendMessage({
     embed {
       description = "description test"
