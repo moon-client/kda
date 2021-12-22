@@ -21,21 +21,21 @@ import net.dv8tion.jda.api.events.interaction.ButtonClickEvent
 import net.dv8tion.jda.internal.interactions.ButtonImpl
 
 class ButtonClickRedirection : Feature() {
-  private val redirections = hashMapOf<String, (ButtonClickEvent) -> Unit>()
+    private val redirections = hashMapOf<String, (ButtonClickEvent) -> Unit>()
 
-  private val buttonClickHook = EventHook<ButtonClickEvent> {
-    val clickedButton = button ?: return@EventHook
-    val redirectionFunction = redirections[clickedButton.id] ?: return@EventHook
-    redirectionFunction.invoke(this)
-  }
-
-  fun createRedirectionOf(
-    buttonImpl: ButtonImpl,
-    func: (ButtonClickEvent) -> Unit
-  ) {
-    val buttonId = buttonImpl.id ?: run {
-      throw IllegalArgumentException("You can't create a redirection for a button without an id!")
+    private val buttonClickHook = EventHook<ButtonClickEvent> {
+        val clickedButton = button ?: return@EventHook
+        val redirectionFunction = redirections[clickedButton.id] ?: return@EventHook
+        redirectionFunction.invoke(this)
     }
-    redirections[buttonId] = func
-  }
+
+    fun createRedirectionOf(
+        buttonImpl: ButtonImpl,
+        func: (ButtonClickEvent) -> Unit
+    ) {
+        val buttonId = buttonImpl.id ?: run {
+            throw IllegalArgumentException("You can't create a redirection for a button without an id!")
+        }
+        redirections[buttonId] = func
+    }
 }

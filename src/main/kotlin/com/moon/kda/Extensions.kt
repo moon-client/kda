@@ -19,12 +19,12 @@ import com.moon.kda.feature.Features
 import net.dv8tion.jda.api.JDA
 
 fun JDA.withFeature(feature: Features) {
-  log("Registered extension ${feature.name}")
-  val featureInstance = feature.feature
-  featureInstance.registerListeners()
-  addEventListener(featureInstance)
+    log("Registered extension ${feature.name}")
+    val featureInstance = feature.feature
+    featureInstance.registerListeners()
+    addEventListener(featureInstance)
 }
 
 fun JDA.withFeatures(vararg features: Features) {
-  features.forEach(this::withFeature)
+    features.forEach(this::withFeature)
 }

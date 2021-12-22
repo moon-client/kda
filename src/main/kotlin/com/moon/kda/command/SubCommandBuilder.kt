@@ -21,34 +21,34 @@ import net.dv8tion.jda.api.interactions.commands.build.SubcommandData
 import net.dv8tion.jda.internal.utils.Checks
 
 class SubCommandBuilder {
-  var name: String = "default"
-    set(value) {
-      Checks.notEmpty(name, "Name")
-      Checks.notLonger(name, 32, "Name")
-      Checks.matches(name, Checks.ALPHANUMERIC_WITH_DASH, "Name")
-      Checks.isLowercase(name, "Name")
-      field = value
-    }
-  var description: String = "default"
-    set(value) {
-      Checks.notEmpty(description, "Description")
-      Checks.notLonger(description, 100, "Description")
-      field = value
-    }
-  internal var options = arrayOf<Option<*>>()
+    var name: String = "default"
+        set(value) {
+            Checks.notEmpty(name, "Name")
+            Checks.notLonger(name, 32, "Name")
+            Checks.matches(name, Checks.ALPHANUMERIC_WITH_DASH, "Name")
+            Checks.isLowercase(name, "Name")
+            field = value
+        }
+    var description: String = "default"
+        set(value) {
+            Checks.notEmpty(description, "Description")
+            Checks.notLonger(description, 100, "Description")
+            field = value
+        }
+    internal var options = arrayOf<Option<*>>()
 
-  fun build(): SubcommandData {
-    val translatedOptions = options.map { option ->
-      OptionData(
-        option.discordOptionType(),
-        option.name,
-        option.description,
-        option.required
-      )
-    }.toTypedArray()
-    return SubcommandData(
-      name,
-      description
-    ).addOptions(*translatedOptions)
-  }
+    fun build(): SubcommandData {
+        val translatedOptions = options.map { option ->
+            OptionData(
+                option.discordOptionType(),
+                option.name,
+                option.description,
+                option.required
+            )
+        }.toTypedArray()
+        return SubcommandData(
+            name,
+            description
+        ).addOptions(*translatedOptions)
+    }
 }

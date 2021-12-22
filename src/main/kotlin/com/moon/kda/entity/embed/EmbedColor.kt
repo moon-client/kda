@@ -18,6 +18,6 @@ package com.moon.kda.entity.embed
 import java.awt.Color
 
 class EmbedColor {
-  var hex: Long? = null
-  var rgb: Color? = null
+    var hex: Long? = null
+    var rgb: Color? = null
 }

@@ -16,7 +16,7 @@
 package com.moon.kda.entity.embed
 
 class EmbedAuthor {
-  var name: String? = null
-  var url: String? = null
-  var iconUrl: String? = null
+    var name: String? = null
+    var url: String? = null
+    var iconUrl: String? = null
 }

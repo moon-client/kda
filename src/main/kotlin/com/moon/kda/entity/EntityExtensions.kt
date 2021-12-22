@@ -25,27 +25,27 @@ import net.dv8tion.jda.internal.interactions.ButtonImpl
 import java.util.function.Consumer
 
 fun MessageChannel.sendMessage(block: MessageBuilder.() -> Unit) {
-  this.sendMessage(
-    MessageBuilder().apply(block)
-      .build()
-  ).queue()
+    this.sendMessage(
+        MessageBuilder().apply(block)
+            .build()
+    ).queue()
 }
 
 fun MessageChannel.sendMessage(
-  block: MessageBuilder.() -> Unit,
-  consumer: Consumer<Message>
+    block: MessageBuilder.() -> Unit,
+    consumer: Consumer<Message>
 ) {
-  this.sendMessage(
-    MessageBuilder().apply(block)
-      .build()
-  ).queue(consumer)
+    this.sendMessage(
+        MessageBuilder().apply(block)
+            .build()
+    ).queue(consumer)
 }
 
 fun ButtonImpl.onClick(func: (ButtonClickEvent) -> Unit) {
-  val clickRedirectionFeature = Features.BUTTON_CLICK_REDIRECTION.feature
-    as ButtonClickRedirection
-  clickRedirectionFeature.createRedirectionOf(
-    this,
-    func
-  )
+    val clickRedirectionFeature = Features.BUTTON_CLICK_REDIRECTION.feature
+            as ButtonClickRedirection
+    clickRedirectionFeature.createRedirectionOf(
+        this,
+        func
+    )
 }

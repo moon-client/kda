@@ -16,6 +16,6 @@
 package com.moon.kda.entity.embed
 
 class EmbedFooter {
-  var text: String? = null
-  var iconUrl: String? = null
+    var text: String? = null
+    var iconUrl: String? = null
 }

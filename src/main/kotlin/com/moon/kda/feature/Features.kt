@@ -20,6 +20,6 @@ import com.moon.kda.command.CommandExecutionRedirection
 import com.moon.kda.entity.button.ButtonClickRedirection
 
 enum class Features(val feature: Feature) {
-  BUTTON_CLICK_REDIRECTION(ButtonClickRedirection()),
-  COMMAND_EXECUTION_REDIRECTION(CommandExecutionRedirection())
+    BUTTON_CLICK_REDIRECTION(ButtonClickRedirection()),
+    COMMAND_EXECUTION_REDIRECTION(CommandExecutionRedirection())
 }

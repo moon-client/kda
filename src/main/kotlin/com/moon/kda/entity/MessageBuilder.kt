@@ -21,38 +21,38 @@ import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.interactions.components.ActionRow
 
 class MessageBuilder : MessageBuilder() {
-  var tts = false
-    set(tts) {
-      setTTS(tts)
+    var tts = false
+        set(tts) {
+            setTTS(tts)
+        }
+    var nonce = ""
+        set(nonce) {
+            setNonce(nonce)
+        }
+    var content = ""
+        set(content) {
+            setContent(content)
+        }
+
+    fun embed(block: EmbedBuilder.() -> Unit) {
+        setEmbeds(
+            EmbedBuilder().apply(block)
+                .build()
+        )
     }
-  var nonce = ""
-    set(nonce) {
-      setNonce(nonce)
+
+    fun actionRow(block: ActionRowBuilder.() -> Unit) {
+        setActionRows(
+            ActionRowBuilder().apply(block)
+                .build()
+        )
     }
-  var content = ""
-    set(content) {
-      setContent(content)
+
+    fun embeds(vararg embeds: MessageEmbed) {
+        setEmbeds(*embeds)
     }
 
-  fun embed(block: EmbedBuilder.() -> Unit) {
-    setEmbeds(
-      EmbedBuilder().apply(block)
-        .build()
-    )
-  }
-
-  fun actionRow(block: ActionRowBuilder.() -> Unit) {
-    setActionRows(
-      ActionRowBuilder().apply(block)
-        .build()
-    )
-  }
-
-  fun embeds(vararg embeds: MessageEmbed) {
-    setEmbeds(*embeds)
-  }
-
-  fun actionRows(vararg actionRows: ActionRow) {
-    setActionRows(*actionRows)
-  }
+    fun actionRows(vararg actionRows: ActionRow) {
+        setActionRows(*actionRows)
+    }
 }

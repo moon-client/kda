@@ -21,16 +21,16 @@ import net.dv8tion.jda.api.interactions.commands.build.SubcommandData
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandGroupData
 
 fun command(block: CommandBuilder.() -> Unit): CommandData {
-  return CommandBuilder().apply(block)
-    .build()
+    return CommandBuilder().apply(block)
+        .build()
 }
 
 fun subCommand(block: SubCommandBuilder.() -> Unit): SubcommandData {
-  return SubCommandBuilder().apply(block)
-    .build()
+    return SubCommandBuilder().apply(block)
+        .build()
 }
 
 fun subCommandGroup(block: SubCommandGroupBuilder.() -> Unit): SubcommandGroupData {
-  return SubCommandGroupBuilder().apply(block)
-    .build()
+    return SubCommandGroupBuilder().apply(block)
+        .build()
 }

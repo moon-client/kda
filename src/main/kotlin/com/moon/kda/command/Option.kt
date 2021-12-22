@@ -26,47 +26,46 @@ import java.lang.Double
 import java.lang.Float
 import java.lang.Long
 import java.lang.Short
-import java.lang.IllegalArgumentException
 
 private val optionTranslationMap = mapOf<Class<*>, OptionType>(
-  String::class.java to OptionType.STRING,
-  Integer::class.java to OptionType.INTEGER,
-  Boolean::class.java to OptionType.BOOLEAN,
-  User::class.java to OptionType.USER,
-  GuildChannel::class.java to OptionType.CHANNEL,
-  Role::class.java to OptionType.ROLE,
-  IMentionable::class.java to OptionType.MENTIONABLE,
-  Float::class.java to OptionType.NUMBER,
-  Double::class.java to OptionType.NUMBER,
-  Byte::class.java to OptionType.NUMBER,
-  Long::class.java to OptionType.NUMBER,
-  Short::class.java to OptionType.NUMBER
+    String::class.java to OptionType.STRING,
+    Integer::class.java to OptionType.INTEGER,
+    Boolean::class.java to OptionType.BOOLEAN,
+    User::class.java to OptionType.USER,
+    GuildChannel::class.java to OptionType.CHANNEL,
+    Role::class.java to OptionType.ROLE,
+    IMentionable::class.java to OptionType.MENTIONABLE,
+    Float::class.java to OptionType.NUMBER,
+    Double::class.java to OptionType.NUMBER,
+    Byte::class.java to OptionType.NUMBER,
+    Long::class.java to OptionType.NUMBER,
+    Short::class.java to OptionType.NUMBER
 )
 
 class Option<T>(
-  private val genericType: Class<T>,
-  val name: String,
-  val description: String,
-  val required: Boolean
+    private val genericType: Class<T>,
+    val name: String,
+    val description: String,
+    val required: Boolean
 ) {
-  fun discordOptionType(): OptionType {
-    val translatedOption = optionTranslationMap[genericType] ?: run {
-      failed("OptionType resolve error: $genericType does not have an assigned OptionType")
-      throw IllegalArgumentException("Could not resolve an OptionType for $genericType")
+    fun discordOptionType(): OptionType {
+        val translatedOption = optionTranslationMap[genericType] ?: run {
+            failed("OptionType resolve error: $genericType does not have an assigned OptionType")
+            throw IllegalArgumentException("Could not resolve an OptionType for $genericType")
+        }
+        return translatedOption
     }
-    return translatedOption
-  }
 }
 
 inline fun <reified T> option(
-  name: String,
-  description: String,
-  required: Boolean = false
+    name: String,
+    description: String,
+    required: Boolean = false
 ): Option<T> {
-  return Option(
-    T::class.java,
-    name,
-    description,
-    required
-  )
+    return Option(
+        T::class.java,
+        name,
+        description,
+        required
+    )
 }

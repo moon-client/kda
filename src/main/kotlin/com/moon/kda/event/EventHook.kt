@@ -17,4 +17,4 @@ package com.moon.kda.event
 
 import net.dv8tion.jda.api.events.GenericEvent
 
-class EventHook<T: GenericEvent>(val receiver: T.() -> Unit)
+class EventHook<T : GenericEvent>(val receiver: T.() -> Unit)

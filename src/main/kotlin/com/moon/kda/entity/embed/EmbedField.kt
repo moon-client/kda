@@ -16,7 +16,7 @@
 package com.moon.kda.entity.embed
 
 class EmbedField {
-  var name: String? = null
-  var value: String? = null
-  var inline = false
+    var name: String? = null
+    var value: String? = null
+    var inline = false
 }

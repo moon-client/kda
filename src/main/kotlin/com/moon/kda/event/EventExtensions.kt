@@ -19,11 +19,11 @@ package com.moon.kda.event
 import net.dv8tion.jda.api.JDA
 
 fun JDA.registerEvents(events: Events) {
-  events.registerListeners()
-  addEventListener(events)
+    events.registerListeners()
+    addEventListener(events)
 }
 
 fun JDA.registerEvents(vararg events: Events) {
-  events.forEach(Events::registerListeners)
-  addEventListener(events)
+    events.forEach(Events::registerListeners)
+    addEventListener(events)
 }

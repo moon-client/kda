@@ -21,32 +21,33 @@ import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
 open class Events : EventListener {
-  private val listeners = hashMapOf<Type, MutableList<EventHook<GenericEvent>>>()
+    private val listeners = hashMapOf<Type, MutableList<EventHook<GenericEvent>>>()
 
-  override fun onEvent(event: GenericEvent) {
-    val listeners = listeners[event.javaClass] ?: return
-    listeners.forEach { listener ->
-      listener.receiver.invoke(event)
+    override fun onEvent(event: GenericEvent) {
+        val listeners = listeners[event.javaClass] ?: return
+        listeners.forEach { listener ->
+            listener.receiver.invoke(event)
+        }
     }
-  }
 
-  fun registerListeners() {
-    javaClass.declaredFields.forEach { field ->
-      if (field.type == EventHook::class.java) {
-        field.isAccessible = true
-        val parameterizedType = field.genericType as ParameterizedType
-        val eventClazz = parameterizedType.actualTypeArguments[0]
-        @Suppress("UNCHECKED_CAST")
-        val eventHook = field[this] as? EventHook<GenericEvent> ?: run {
-          println("Error while registering listener ${field.name}")
-          return@forEach
+    fun registerListeners() {
+        javaClass.declaredFields.forEach { field ->
+            if (field.type == EventHook::class.java) {
+                field.isAccessible = true
+                val parameterizedType = field.genericType as ParameterizedType
+                val eventClazz = parameterizedType.actualTypeArguments[0]
+
+                @Suppress("UNCHECKED_CAST")
+                val eventHook = field[this] as? EventHook<GenericEvent> ?: run {
+                    println("Error while registering listener ${field.name}")
+                    return@forEach
+                }
+                val mutableList = listeners[eventClazz] ?: run {
+                    listeners[eventClazz] = mutableListOf(eventHook)
+                    return@forEach
+                }
+                mutableList.add(eventHook)
+            }
         }
-        val mutableList = listeners[eventClazz] ?: run {
-          listeners[eventClazz] = mutableListOf(eventHook)
-          return@forEach
-        }
-        mutableList.add(eventHook)
-      }
     }
-  }
 }

@@ -21,16 +21,16 @@ import net.dv8tion.jda.api.interactions.components.Component
 import net.dv8tion.jda.internal.interactions.ButtonImpl
 
 class ActionRowBuilder {
-  private val components = mutableListOf<Component>()
+    private val components = mutableListOf<Component>()
 
-  fun button(block: ButtonBuilder.() -> Unit): ButtonImpl {
-    val button = ButtonBuilder().apply(block)
-      .build()
-    components.add(button)
-    return button
-  }
+    fun button(block: ButtonBuilder.() -> Unit): ButtonImpl {
+        val button = ButtonBuilder().apply(block)
+            .build()
+        components.add(button)
+        return button
+    }
 
-  fun build(): ActionRow {
-    return ActionRow.of(components)
-  }
+    fun build(): ActionRow {
+        return ActionRow.of(components)
+    }
 }

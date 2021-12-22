@@ -20,24 +20,24 @@ import net.dv8tion.jda.api.interactions.commands.build.SubcommandGroupData
 import net.dv8tion.jda.internal.utils.Checks
 
 class SubCommandGroupBuilder {
-  var name: String = "default"
-    set(value) {
-      Checks.notEmpty(name, "Name")
-      Checks.notLonger(name, 32, "Name")
-      Checks.matches(name, Checks.ALPHANUMERIC_WITH_DASH, "Name")
-      Checks.isLowercase(name, "Name")
-      field = value
-    }
-  var description: String = "default"
-    set(value) {
-      Checks.notEmpty(description, "Description")
-      Checks.notLonger(description, 100, "Description")
-      field = value
-    }
-  internal var subCommands = arrayOf<SubcommandData>()
+    var name: String = "default"
+        set(value) {
+            Checks.notEmpty(name, "Name")
+            Checks.notLonger(name, 32, "Name")
+            Checks.matches(name, Checks.ALPHANUMERIC_WITH_DASH, "Name")
+            Checks.isLowercase(name, "Name")
+            field = value
+        }
+    var description: String = "default"
+        set(value) {
+            Checks.notEmpty(description, "Description")
+            Checks.notLonger(description, 100, "Description")
+            field = value
+        }
+    internal var subCommands = arrayOf<SubcommandData>()
 
-  fun build(): SubcommandGroupData {
-    return SubcommandGroupData(name, description)
-      .addSubcommands(*subCommands)
-  }
+    fun build(): SubcommandGroupData {
+        return SubcommandGroupData(name, description)
+            .addSubcommands(*subCommands)
+    }
 }

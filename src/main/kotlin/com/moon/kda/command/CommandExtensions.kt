@@ -21,11 +21,11 @@ import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import net.dv8tion.jda.api.interactions.commands.build.CommandData
 
 fun CommandData.onExecution(func: (SlashCommandEvent) -> Unit): CommandData {
-  val clickRedirectionFeature = Features.COMMAND_EXECUTION_REDIRECTION.feature
-    as CommandExecutionRedirection
-  clickRedirectionFeature.createRedirectionOf(
-    this,
-    func
-  )
-  return this
+    val clickRedirectionFeature = Features.COMMAND_EXECUTION_REDIRECTION.feature
+            as CommandExecutionRedirection
+    clickRedirectionFeature.createRedirectionOf(
+        this,
+        func
+    )
+    return this
 }

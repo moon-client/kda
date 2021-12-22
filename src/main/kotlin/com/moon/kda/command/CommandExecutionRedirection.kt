@@ -19,20 +19,19 @@ import com.moon.kda.event.EventHook
 import com.moon.kda.feature.Feature
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import net.dv8tion.jda.api.interactions.commands.build.CommandData
-import net.dv8tion.jda.internal.interactions.ButtonImpl
 
 class CommandExecutionRedirection : Feature() {
-  private val redirections = hashMapOf<String, (SlashCommandEvent) -> Unit>()
+    private val redirections = hashMapOf<String, (SlashCommandEvent) -> Unit>()
 
-  private val commandExecutionHook = EventHook<SlashCommandEvent> {
-    val redirectionFunction = redirections[name] ?: return@EventHook
-    redirectionFunction.invoke(this)
-  }
+    private val commandExecutionHook = EventHook<SlashCommandEvent> {
+        val redirectionFunction = redirections[name] ?: return@EventHook
+        redirectionFunction.invoke(this)
+    }
 
-  fun createRedirectionOf(
-    commandData: CommandData,
-    func: (SlashCommandEvent) -> Unit
-  ) {
-    redirections[commandData.name] = func
-  }
+    fun createRedirectionOf(
+        commandData: CommandData,
+        func: (SlashCommandEvent) -> Unit
+    ) {
+        redirections[commandData.name] = func
+    }
 }
