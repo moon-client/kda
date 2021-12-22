@@ -18,10 +18,10 @@ package com.moon.kda.tests
 
 import com.moon.kda.event.Events
 import com.moon.kda.event.EventHook
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class EventTest : Events() {
-  val guildMessageReceivedHook = EventHook<GuildMessageReceivedEvent> {
+  val guildMessageReceivedHook = EventHook<MessageReceivedEvent> {
     println("Received message: ${message.contentRaw}")
   }
 }
