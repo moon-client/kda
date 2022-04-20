@@ -18,10 +18,11 @@ package com.moon.kda.entity
 import com.moon.kda.entity.button.ButtonBuilder
 import net.dv8tion.jda.api.interactions.components.ActionRow
 import net.dv8tion.jda.api.interactions.components.Component
-import net.dv8tion.jda.internal.interactions.ButtonImpl
+import net.dv8tion.jda.api.interactions.components.ItemComponent
+import net.dv8tion.jda.internal.interactions.component.ButtonImpl
 
 class ActionRowBuilder {
-    private val components = mutableListOf<Component>()
+    private val components = mutableListOf<ItemComponent>()
 
     fun button(block: ButtonBuilder.() -> Unit): ButtonImpl {
         val button = ButtonBuilder().apply(block)

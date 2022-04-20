@@ -13,15 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.moon.kda.entity
 
 import com.moon.kda.entity.button.ButtonClickRedirection
 import com.moon.kda.feature.Features
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.MessageChannel
-import net.dv8tion.jda.api.events.interaction.ButtonClickEvent
-import net.dv8tion.jda.internal.interactions.ButtonImpl
+import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent
+import net.dv8tion.jda.internal.interactions.component.ButtonImpl
 import java.util.function.Consumer
 
 fun MessageChannel.sendMessage(block: MessageBuilder.() -> Unit) {
@@ -41,7 +40,7 @@ fun MessageChannel.sendMessage(
     ).queue(consumer)
 }
 
-fun ButtonImpl.onClick(func: (ButtonClickEvent) -> Unit) {
+fun ButtonImpl.onClick(func: (ButtonInteractionEvent) -> Unit) {
     val clickRedirectionFeature = Features.BUTTON_CLICK_REDIRECTION.feature
             as ButtonClickRedirection
     clickRedirectionFeature.createRedirectionOf(

@@ -16,10 +16,7 @@
 
 package com.moon.kda.command
 
-import net.dv8tion.jda.api.interactions.commands.build.CommandData
-import net.dv8tion.jda.api.interactions.commands.build.OptionData
-import net.dv8tion.jda.api.interactions.commands.build.SubcommandData
-import net.dv8tion.jda.api.interactions.commands.build.SubcommandGroupData
+import net.dv8tion.jda.api.interactions.commands.build.*
 import net.dv8tion.jda.internal.utils.Checks
 
 class CommandBuilder {
@@ -41,7 +38,7 @@ class CommandBuilder {
     internal var subCommands = arrayOf<SubcommandData>()
     internal var subCommandGroups = arrayOf<SubcommandGroupData>()
 
-    fun build(): CommandData {
+    fun build(): SlashCommandData {
         val translatedOptions = options.map { option ->
             OptionData(
                 option.discordOptionType(),
@@ -50,16 +47,16 @@ class CommandBuilder {
                 option.required
             )
         }.toTypedArray()
-        val commandData = CommandData(
+        val data = Commands.slash(
             name,
             description
         )
         if (options.isEmpty()) {
-            commandData.addSubcommands(*subCommands)
+            data.addSubcommands(*subCommands)
                 .addSubcommandGroups(*subCommandGroups)
         } else {
-            commandData.addOptions(*translatedOptions)
+            data.addOptions(*translatedOptions)
         }
-        return commandData
+        return data
     }
 }

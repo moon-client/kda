@@ -17,12 +17,12 @@
 package com.moon.kda.command
 
 import com.moon.kda.feature.Features
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 import net.dv8tion.jda.api.interactions.commands.build.CommandData
 
-fun CommandData.onExecution(func: (SlashCommandEvent) -> Unit): CommandData {
+fun CommandData.onExecution(func: (SlashCommandInteractionEvent) -> Unit): CommandData {
     val clickRedirectionFeature = Features.COMMAND_EXECUTION_REDIRECTION.feature
-            as CommandExecutionRedirection
+        as CommandExecutionRedirection
     clickRedirectionFeature.createRedirectionOf(
         this,
         func

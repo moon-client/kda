@@ -17,21 +17,21 @@ package com.moon.kda.entity.button
 
 import com.moon.kda.event.EventHook
 import com.moon.kda.feature.Feature
-import net.dv8tion.jda.api.events.interaction.ButtonClickEvent
-import net.dv8tion.jda.internal.interactions.ButtonImpl
+import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent
+import net.dv8tion.jda.internal.interactions.component.ButtonImpl
 
 class ButtonClickRedirection : Feature() {
-    private val redirections = hashMapOf<String, (ButtonClickEvent) -> Unit>()
+    private val redirections = hashMapOf<String, (ButtonInteractionEvent) -> Unit>()
 
-    private val buttonClickHook = EventHook<ButtonClickEvent> {
-        val clickedButton = button ?: return@EventHook
+    private val buttonClickHook = EventHook<ButtonInteractionEvent> {
+        val clickedButton = button
         val redirectionFunction = redirections[clickedButton.id] ?: return@EventHook
         redirectionFunction.invoke(this)
     }
 
     fun createRedirectionOf(
         buttonImpl: ButtonImpl,
-        func: (ButtonClickEvent) -> Unit
+        func: (ButtonInteractionEvent) -> Unit
     ) {
         val buttonId = buttonImpl.id ?: run {
             throw IllegalArgumentException("You can't create a redirection for a button without an id!")

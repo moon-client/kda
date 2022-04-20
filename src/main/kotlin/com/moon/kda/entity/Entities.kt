@@ -19,7 +19,7 @@ import com.moon.kda.entity.button.ButtonBuilder
 import com.moon.kda.entity.embed.EmbedBuilder
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.MessageEmbed
-import net.dv8tion.jda.internal.interactions.ButtonImpl
+import net.dv8tion.jda.internal.interactions.component.ButtonImpl
 
 fun embed(block: EmbedBuilder.() -> Unit): MessageEmbed =
     EmbedBuilder().apply(block).build()
